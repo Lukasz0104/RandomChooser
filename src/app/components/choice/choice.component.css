@@ -1,0 +1,25 @@
+button
+{
+	background-color: #ee0000;
+	border: 2px black solid;
+	display: inline;
+	font-size: 2em;
+	padding: 5px 10px;
+	margin: 5px;
+}
+
+input
+{
+	margin: 10px 5px; 
+	font-size: 1.5em;
+	padding: 5px;
+	color: black;
+	background-color: lightslategray;
+	opacity: 0.75;
+}
+
+input::placeHolder
+{
+	font-size: 0.7em;
+	color: black;
+}

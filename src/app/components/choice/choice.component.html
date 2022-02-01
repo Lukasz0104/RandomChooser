@@ -1,0 +1,9 @@
+<div>
+	<input  type="text"
+			[(ngModel)]="choice.value" 
+			(focusout)="handleFocusOut()"
+			[attr.placeholder]="showPlaceholder ? 'You need to specify at least 2 items' : null" />
+	<button class="rmButton" 
+			(click)="emitDeletionEvent()" 
+			[disabled]="disableButton">X</button>
+</div>

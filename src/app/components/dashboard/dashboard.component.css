@@ -1,0 +1,22 @@
+#container
+{
+	display: flex;
+	flex-flow: row wrap;
+	justify-content: center;
+	width: 90%;
+	margin: auto;
+}
+
+choice
+{
+	margin: 5px;
+	/* background-color: rgb(182, 238, 182); */
+	background-color: lightslategray;
+	border: 2px black solid;
+	border-radius: 10px;
+}
+
+#controls
+{
+	height: 200px;
+}

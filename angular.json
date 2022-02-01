@@ -3,7 +3,7 @@
 	"version": 1,
 	"newProjectRoot": "projects",
 	"projects": {
-		"LosowoWybierator": {
+		"RandomChooser": {
 			"projectType": "application",
 			"schematics": {
 				"@schematics/angular:application": {
@@ -12,12 +12,12 @@
 			},
 			"root": "",
 			"sourceRoot": "src",
-			"prefix": "app",
+			"prefix": "",
 			"architect": {
 				"build": {
 					"builder": "@angular-devkit/build-angular:browser",
 					"options": {
-						"outputPath": "dist/LosowoWybierator",
+						"outputPath": "dist/RandomChooser",
 						"index": "src/index.html",
 						"main": "src/main.ts",
 						"polyfills": "src/polyfills.ts",
@@ -68,10 +68,10 @@
 					"builder": "@angular-devkit/build-angular:dev-server",
 					"configurations": {
 						"production": {
-							"browserTarget": "LosowoWybierator:build:production"
+							"browserTarget": "RandomChooser:build:production"
 						},
 						"development": {
-							"browserTarget": "LosowoWybierator:build:development"
+							"browserTarget": "RandomChooser:build:development"
 						}
 					},
 					"defaultConfiguration": "development"
@@ -79,7 +79,7 @@
 				"extract-i18n": {
 					"builder": "@angular-devkit/build-angular:extract-i18n",
 					"options": {
-						"browserTarget": "LosowoWybierator:build"
+						"browserTarget": "RandomChooser:build"
 					}
 				},
 				"test": {
@@ -102,5 +102,5 @@
 			}
 		}
 	},
-	"defaultProject": "LosowoWybierator"
+	"defaultProject": "RandomChooser"
 }

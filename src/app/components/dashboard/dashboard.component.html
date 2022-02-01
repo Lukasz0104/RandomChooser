@@ -1,0 +1,12 @@
+<div id="controls">
+	
+</div>
+<div id="container">
+	<choice *ngFor="let choice of choices" 
+			[choice]="choice" 
+			(choiceDeletionEvent)="deleteChoice($event)"
+			(focusOutEvent)="manageChoices()"
+			[disableButton]="countNotEmpty() < 2 || choice.value === ''"
+			[showPlaceholder]="countNotEmpty() < 2">
+	</choice>
+</div>
