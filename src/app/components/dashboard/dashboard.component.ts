@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Choice } from 'src/app/choice';
+import { DataSharingService } from '../../services/DataSharing/data-sharing.service';
 
 @Component({
 	selector: 'dashboard',
@@ -8,17 +9,28 @@ import { Choice } from 'src/app/choice';
 })
 export class DashboardComponent implements OnInit
 {
-
 	choices: Array<Choice> = new Array<Choice>();
 
-	constructor()
-	{
-		this.choices.push(new Choice(), new Choice());
-	}
+	constructor(private dataSharing: DataSharingService) { }
 
 	ngOnInit(): void
 	{
+		if (this.dataSharing.data.length < 2)
+		{
+			for (let line of this.dataSharing.data)
+				this.choices.push(new Choice(line));
 
+			while (this.choices.length < 2)
+				this.choices.push(new Choice());
+		}
+		else
+		{
+			for (let line of this.dataSharing.data)
+				this.choices.push(new Choice(line));
+
+			this.choices.push(new Choice());
+		}
+		this.dataSharing.data = [];
 	}
 
 	countNotEmpty(): number
@@ -39,9 +51,9 @@ export class DashboardComponent implements OnInit
 	manageChoices(): void
 	{
 		const countFilled = this.countNotEmpty();
-		
+
 		if (countFilled < 2)
-		{			
+		{
 			let removedCount = 0;
 
 			for (let i = 0; this.choices.length > 2 && removedCount < 2 - countFilled; i++)
@@ -55,7 +67,7 @@ export class DashboardComponent implements OnInit
 		}
 		else
 		{
-			for (let i = this.choices.length; i-- > 0; )
+			for (let i = this.choices.length; i-- > 0;)
 			{
 				if (this.choices[i].value === '')
 				{

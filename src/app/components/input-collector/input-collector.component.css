@@ -1,0 +1,57 @@
+div
+{
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 10vh;
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	grid-template-rows: auto auto auto; 
+	width: max-content;
+	column-gap: 10px;
+	row-gap: 5px;
+}
+
+label
+{
+	grid-row: 1;
+	grid-column: 1;
+	justify-self: right;
+	font-size: 1.5em;
+}
+
+input
+{
+	grid-row: 1;
+	grid-column: 2;
+	width: 13ch;
+	justify-self: left;
+}
+
+textarea
+{
+	resize: none;
+	grid-row: -1;
+	grid-column: 1 / span 2;
+	white-space: pre;
+	overflow-wrap: normal;
+	overflow-x: scroll;
+	font-family: monospace;
+}
+
+button
+{
+	font-size: 1.5em;
+	grid-row: 2;
+}
+
+button#cancel
+{
+	grid-column: 1;
+	background-color: red;
+}
+
+button#continue
+{	
+	grid-column: 2;
+	background-color: lawngreen;
+}
