@@ -1,13 +1,13 @@
 <div>
 	<label >Separator: </label>
 	<input placeholder="\n (new line)" 
-			type="text" 
-			[(ngModel)]="separator" />
+		type="text"
+		[(ngModel)]="separator" />
 	<button id="cancel" routerLink="/">Cancel</button>
 	<button id="continue" 
-			routerLink="/" 
-			(click)="proceed()">Proceed</button>
+		routerLink="/" 
+		(click)="proceed()">Proceed</button>
 	<textarea rows="30" cols="100" 
-			[(ngModel)]="lines" 
-			placeholder="Type or paste your options here."></textarea>
+		[(ngModel)]="lines" 
+		placeholder="Type or paste your options here."></textarea>
 </div>

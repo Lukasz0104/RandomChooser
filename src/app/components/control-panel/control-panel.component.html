@@ -1,0 +1,12 @@
+<div>
+	<button id="add" routerLink="/input">Add options</button>
+	<button id="clear" (click)="emitClearEvent()">Clear</button>
+	<label>Count:</label>
+	<input type="number" 
+		min="1" 
+		[max]="choices.length > 1 ? choices.length : 1"
+		[(ngModel)]="count"
+		[style.width]="(choices.length.toString().length + 2) + 'ch'" />
+	<button id="draw" (click)="draw()" 
+		[attr.disabled]="choices.length < 2 ? true : null">Draw!</button>
+</div>

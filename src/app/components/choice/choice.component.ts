@@ -27,26 +27,18 @@ export class ChoiceComponent implements OnInit
 
 	ngOnInit(): void { }
 
-	getValue(): String
-	{
-		return this.choice.value;
-	}
-
-	isEmpty(): boolean
-	{
-		return this.choice.value == "";
-	}
-
 	handleFocusOut(): void
 	{
 		this.focusOutEvent.emit();
 	}
 
-	
 	emitDeletionEvent(): void
 	{
 		this.choiceDeletionEvent.emit(this.choice);
 	}
 
-
+	isChosen(): boolean
+	{
+		return this.choice.chosen;
+	}
 }

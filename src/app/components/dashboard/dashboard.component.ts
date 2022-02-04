@@ -77,4 +77,15 @@ export class DashboardComponent implements OnInit
 			this.choices.push(new Choice());
 		}
 	}
+
+	clearChoices()
+	{
+		this.choices.length = 0;
+		this.choices.push(new Choice(), new Choice());
+	}
+
+	getFilledChoices(): Array<Choice>
+	{
+		return this.choices.filter(c => c.value !== '');
+	}
 }
