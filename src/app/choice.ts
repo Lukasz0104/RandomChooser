@@ -4,6 +4,7 @@ export class Choice
 	{
 		this.value = val;
 	}
-	
-	value : string;
+
+	value: string;
+	chosen: boolean = false;
 }

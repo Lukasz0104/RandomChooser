@@ -7,13 +7,15 @@ import { ChoiceComponent } from './components/choice/choice.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { AppRoutingModule } from './app-routing/app-routing.module';
 import { InputCollectorComponent } from './components/input-collector/input-collector.component';
+import { ControlPanelComponent } from './components/control-panel/control-panel.component';
 
 @NgModule({
 	declarations: [
 		AppComponent,
 		ChoiceComponent,
 		DashboardComponent,
-		InputCollectorComponent
+		InputCollectorComponent,
+		ControlPanelComponent
 	],
 	imports: [
 		BrowserModule,
