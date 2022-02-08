@@ -5,7 +5,7 @@ input[type=button]
 	display: inline;
 	font-size: 2em;
 	padding: 5px 10px;
-	margin: 5px;
+	margin: 0 5px 0 0;
 }
 
 input[type=text]
@@ -16,6 +16,7 @@ input[type=text]
 	color: black;
 	background-color: inherit;
 	opacity: 0.75;
+	width: calc(100% - 29px - 2em);
 }
 
 input::placeHolder

@@ -1,13 +1,13 @@
 div
 {
 	display: grid;
-	grid-template-columns: repeat(4, 1fr);
-	grid-template-rows: repeat(2, 1fr);
+	grid-template-columns: 1fr 1fr;
+	grid-template-rows: repeat(4, 1fr);
 	column-gap: 10px;
 	row-gap: 5px;
-	width: 60%;
+	width: 70%;
 	margin: auto;
-	padding-top: 50px;
+	padding: 15px 0;
 }
 
 div > *:not(label)
@@ -15,40 +15,82 @@ div > *:not(label)
 	font-size: 2em;
 }
 
-label
+div > :not(input, label)
 {
-	justify-self: right;
-	font-size: 2em;
-	align-self: center;
-	grid-row: 2;
-	grid-column: 1;
-}
-
-input
-{
-	text-align: right;
-	justify-self: left;
-	grid-row: 2;
-	grid-column: 2;
+	grid-column: 1 / span 2;
 }
 
 #add
 {
 	background-color: yellow;
-	grid-column: 1 / span 2;
 	grid-row: 1;
 }
 
 #clear
 {
 	background-color: orange;
-	grid-column: 3 / span 2;
-	grid-row: 1;
+	grid-row: 2
+}
+
+label
+{
+	justify-self: right;
+	font-size: 2em;
+	align-self: center;
+	grid-column: 1;
+	grid-row: 3;
+}
+
+input
+{
+	text-align: right;
+	justify-self: left;
+	grid-column: 2;
+	grid-row: 3;
 }
 
 #draw
 {
-	grid-column: 3 / span 2;
-	grid-row: 2;
 	background-color: yellowgreen;
+	grid-row: 4;
+}
+
+@media screen and (min-width: 600px) 
+{
+	div 
+	{
+		grid-template-columns: repeat(4, 1fr);
+		grid-template-rows: repeat(2, 1fr);
+		padding-top: 50px;
+	}
+
+	label
+	{
+		grid-row: 2;
+		grid-column: 1;
+	}
+
+	input
+	{
+		grid-row: 2;
+		grid-column: 2;
+	}
+
+	#add
+	{
+		grid-column: 1 / span 2;
+		grid-row: 1;
+	}
+
+	#clear
+	{
+		grid-column: 3 / span 2;
+		grid-row: 1;
+	}
+
+	#draw
+	{
+		grid-column: 3 / span 2;
+		grid-row: 2;
+	}
 }
