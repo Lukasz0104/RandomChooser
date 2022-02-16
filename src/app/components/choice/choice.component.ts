@@ -36,9 +36,4 @@ export class ChoiceComponent implements OnInit
 	{
 		this.choiceDeletionEvent.emit(this.choice);
 	}
-
-	isChosen(): boolean
-	{
-		return this.choice.chosen;
-	}
 }

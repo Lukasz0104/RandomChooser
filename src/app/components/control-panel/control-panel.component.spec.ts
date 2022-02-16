@@ -51,11 +51,11 @@ describe('ControlPanelComponent', () =>
 		expect(component.draw).toHaveBeenCalled();
 	}));
 
-	it('should pick random', () =>
+	it('should pick random', fakeAsync(() =>
 	{
 		component.choices.push(new Choice(), new Choice());
 		component.draw();
-
+		tick(500);
 		expect(component.choices.filter(c => c.chosen)).toHaveSize(1);
-	});
+	}));
 });
