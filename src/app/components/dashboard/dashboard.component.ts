@@ -53,16 +53,18 @@ export class DashboardComponent implements OnInit
 		const countFilled = this.countNotEmpty();
 
 		if (countFilled < 2)
-		{
-			let removedCount = 0;
-
-			for (let i = 0; this.choices.length > 2 && removedCount < 2 - countFilled; i++)
+		{			
+			for (let i = this.choices.length; i--; )
 			{
 				if (this.choices[i].value === '')
 				{
 					this.choices.splice(i, 1);
-					removedCount++;
 				}
+			}
+			
+			while (this.choices.length < 2)
+			{
+				this.choices.push(new Choice());
 			}
 		}
 		else
@@ -76,6 +78,8 @@ export class DashboardComponent implements OnInit
 			}
 			this.choices.push(new Choice());
 		}
+
+		this.choices.forEach(c => c.chosen = false);
 	}
 
 	clearChoices()
@@ -87,5 +91,15 @@ export class DashboardComponent implements OnInit
 	getFilledChoices(): Array<Choice>
 	{
 		return this.choices.filter(c => c.value !== '');
+	}
+
+	removeSelection(): void
+	{
+		this.choices.forEach(c => c.chosen = false);
+	}
+
+	getSelected(): Array<Choice>
+	{
+		return this.getFilledChoices().filter(c => c.chosen);
 	}
 }

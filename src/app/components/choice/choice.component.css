@@ -24,8 +24,3 @@ input::placeHolder
 	font-size: 0.7em;
 	color: black;
 }
-
-div.chosen
-{
-	background-color: orange;
-}

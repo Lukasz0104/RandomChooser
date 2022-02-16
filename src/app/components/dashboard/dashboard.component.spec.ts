@@ -18,6 +18,11 @@ describe('DashboardComponent', () =>
 	let fixture: ComponentFixture<DashboardComponent>;
 	let service: DataSharingService;
 
+	const createChoices = (n = 5) => {
+		for (let i = 0; i < n; i++)
+			component.choices.push(new Choice(`ch${i}`));
+	}
+
 	beforeEach(async () =>
 	{
 		await TestBed.configureTestingModule({
@@ -92,6 +97,28 @@ describe('DashboardComponent', () =>
 		});
 	});
 
+	it('should remove selection', () =>
+	{
+		createChoices();
+		component.choices.forEach(c => c.chosen = true);
+
+		component.removeSelection();
+
+		component.choices.forEach(c => expect(c.chosen).toBeFalse());
+	});
+
+	it('should move empty choices to the end', () =>
+	{
+		createChoices(3);
+		component.choices[0].value = '';
+		component.choices[1].value = '';
+
+		component.manageChoices();
+		expect(component.choices).toHaveSize(2);
+		expect(component.choices[0].value).toBe('ch2');
+		expect(component.choices[1].value).toBe('');
+	});
+
 	describe('should manage choices', () =>
 	{
 		it('should remove spare choices', () =>
@@ -150,6 +177,18 @@ describe('DashboardComponent', () =>
 
 			expect(component.choices).toHaveSize(5);
 			expect(component.choices[2]).toBe(choices[3]);
+		});
+
+		it('should not change array if called with non-existent choice', () =>
+		{
+			createChoices(5);
+			component.manageChoices();
+
+			expect(component.choices).toHaveSize(6);
+
+			component.deleteChoice(new Choice('i should not be deleted'));
+
+			expect(component.choices).toHaveSize(6);
 		});
 	});
 });

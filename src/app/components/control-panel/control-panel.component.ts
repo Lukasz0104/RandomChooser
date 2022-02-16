@@ -18,6 +18,9 @@ export class ControlPanelComponent implements OnInit
 	@Output()
 	clearEvent = new EventEmitter<any>();
 
+	@Output()
+	unselectEvent = new EventEmitter<any>();
+
 	constructor(private randomizer: RandomizerService) { }
 
 	ngOnInit(): void { }
@@ -30,9 +33,13 @@ export class ControlPanelComponent implements OnInit
 	draw(): void
 	{
 		// clear previous
-		this.choices.forEach(c => c.chosen = false);
+		this.unselectEvent.emit();
 
 		// draw again
-		this.randomizer.getRandom(this.choices, this.count).forEach(c => c.chosen = true);
+		setTimeout(
+			() => this.randomizer
+				.getRandom(this.choices, this.count)
+				.forEach(c => c.chosen = true),
+			500);
 	}
 }

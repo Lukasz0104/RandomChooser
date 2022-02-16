@@ -1,10 +1,13 @@
 <div id="controls">
 	<control-panel (clearEvent)="clearChoices()"
+		(unselectEvent)="removeSelection()"
 		[choices]="getFilledChoices()"></control-panel>
 </div>
 <div id="container">
 	<choice *ngFor="let choice of choices"
 		[choice]="choice"
+		[ngClass]="{chosen: choice.chosen,
+					animate: choice.value && getSelected().length > 0}"
 		(choiceDeletionEvent)="deleteChoice($event)"
 		(focusOutEvent)="manageChoices()"
 		[disableButton]="countNotEmpty() < 2 || choice.value === ''"

@@ -14,6 +14,9 @@ choice
 	background-color: lightslategray;
 	border: 2px black solid;
 	border-radius: 10px;
+
+	--flip-duration: 0.5s;
+	--choose-duration: calc(0.75 * var(--flip-duration));
 }
 
 #controls
@@ -24,4 +27,38 @@ choice
 	z-index: 2;
 	background-color: lightsteelblue;
 	border-bottom: 3px black solid;
+}
+
+choice.animate
+{
+	animation: flip var(--flip-duration) linear 1 normal forwards;
+}
+
+choice.chosen
+{
+	animation-name: flip, choose;
+	animation-duration: var(--flip-duration), var(--choose-duration);
+	animation-timing-function: linear, steps(1);
+}
+
+@keyframes flip {
+	from
+	{
+		transform: rotateX(0deg);
+	}
+	to
+	{
+		transform: rotateX(360deg);
+	}
+}
+
+@keyframes choose {
+	from
+	{
+		background-color: lightslategray;
+	}
+	to
+	{
+		background-color: orange;
+	}
 }
